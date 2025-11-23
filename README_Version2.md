@@ -25,5 +25,19 @@ Files
 - styles.css — layout and styling.
 - script.js — logic to update clocks, add/remove zones and toggle format.
 
-License
-MIT
+## License
+
+Copyright (c) 2025 Yadullah
+
+All rights reserved.
+
+This software and associated documentation files (the "Software") are the exclusive property of Yadullah.
+
+Permission is hereby granted to view and use the Software for personal, non-commercial purposes only.
+
+Restrictions:
+- Redistribution, modification, sublicensing, or commercial use of the Software is strictly prohibited without prior written consent from Yadullah.
+- Copying or launching derivative projects based on this Software is forbidden.
+- Any unauthorized use will be subject to legal action under applicable copyright laws.
+
+For licensing inquiries, please contact Yadullah.
