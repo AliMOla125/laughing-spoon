@@ -26,8 +26,16 @@ source venv/bin/activate
 
 # Install/upgrade dependencies
 echo "Installing dependencies..."
-pip install -q --upgrade pip
-pip install -q -r requirements.txt
+if ! pip install --upgrade pip; then
+    echo "Error: Failed to upgrade pip"
+    exit 1
+fi
+
+if ! pip install -r requirements.txt; then
+    echo "Error: Failed to install dependencies from requirements.txt"
+    exit 1
+fi
+echo "✓ Dependencies installed successfully"
 
 # Check if .env file exists
 if [ ! -f ".env" ]; then

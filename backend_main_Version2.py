@@ -28,7 +28,6 @@ GCP_LOCATION = os.getenv("GCP_LOCATION", "us-central1")
 VERTEX_ENDPOINT_ID = os.getenv("VERTEX_ENDPOINT_ID", "")  # if using a deployed endpoint
 
 if not PERPLEXITY_API_KEY:
-    app.logger = getattr(app, "logger", None)
     print("Warning: PERPLEXITY_API_KEY not set. Perplexity calls will fail until set.")
 
 class Query(BaseModel):
@@ -40,11 +39,14 @@ class Query(BaseModel):
 async def call_perplexity(prompt: str) -> Dict[str, Any]:
     """
     Minimal Perplexity API call — adapt to exact API shape/endpoint.
+    IMPORTANT: Verify this endpoint with official Perplexity AI documentation
+    as the API may have changed. Visit https://docs.perplexity.ai/ for current endpoints.
     """
     if not PERPLEXITY_API_KEY:
         raise RuntimeError("PERPLEXITY_API_KEY missing")
 
     # NOTE: Replace with the current Perplexity API endpoint and payload as needed.
+    # This endpoint may need to be updated based on the latest Perplexity API documentation.
     url = "https://api.perplexity.ai/v1/answers"
     headers = {
         "Authorization": f"Bearer {PERPLEXITY_API_KEY}",

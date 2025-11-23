@@ -33,11 +33,14 @@ class Query(BaseModel):
 async def call_perplexity(prompt: str) -> Dict[str, Any]:
     """
     Placeholder Perplexity API call.
+    IMPORTANT: Verify this endpoint with official Perplexity AI documentation
+    as the API may have changed. Visit https://docs.perplexity.ai/ for current endpoints.
     Adjust endpoint and payload to match current Perplexity API spec.
     """
     if not PERPLEXITY_API_KEY:
         raise RuntimeError("PERPLEXITY_API_KEY missing")
 
+    # NOTE: This endpoint may need to be updated based on the latest Perplexity API documentation.
     url = "https://api.perplexity.ai/v1/answers"  # <-- verify with Perplexity docs
     headers = {
         "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
