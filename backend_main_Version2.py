@@ -15,7 +15,7 @@ except Exception:
     aiplatform = None
     prediction_service_client = None
 
-app = FastAPI(title="Super-CoV Orchestrator (Perplexity + Vertex AI)")
+app = FastAPI(title="COPILOT PRO V - AI Master Tool (Perplexity + Vertex AI)")
 
 # Required environment variables (see README)
 PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY", "")

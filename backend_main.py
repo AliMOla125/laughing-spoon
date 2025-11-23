@@ -13,7 +13,7 @@ try:
 except Exception:
     aiplatform = None  # Keep graceful if library not installed
 
-app = FastAPI(title="Perplexity + Vertex POC Orchestrator")
+app = FastAPI(title="COPILOT PRO V - AI Master Tool (Basic)")
 
 PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY", "")
 # Vertex AI settings: set GOOGLE_APPLICATION_CREDENTIALS file and these envs
