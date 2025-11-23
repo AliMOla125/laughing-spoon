@@ -5,11 +5,13 @@ An advanced AI orchestration platform integrating multiple AI services (Perplexi
 ## 🌟 Features
 
 - **Multi-AI Integration**: Combines Perplexity AI for web-grounded research and Google Vertex AI for advanced language processing
+- **Web Dashboard**: Beautiful, responsive UI for easy service management and monitoring
 - **Industry-Focused**: Tailored solutions for healthcare, consumer services, and education sectors
 - **RESTful API**: FastAPI-based backend for easy integration
 - **Flexible Configuration**: Support for multiple authentication methods (service accounts, API keys)
 - **Async Processing**: High-performance asynchronous request handling
 - **IDE Integration**: Built-in endpoint for IDE extensions and development tools
+- **Automated Startup**: Convenient shell script for quick deployment
 
 ## 🚀 Quick Start
 
@@ -40,6 +42,17 @@ cp .env.example .env
 ```
 
 4. Run the application:
+
+**Option A: Using the automated startup script (Recommended)**
+```bash
+# For Version 2 (Enhanced)
+./start.sh v2
+
+# Or for Version 1 (Basic)
+./start.sh v1
+```
+
+**Option B: Manual startup**
 ```bash
 # Using the basic version
 uvicorn backend_main:app --reload
@@ -49,6 +62,24 @@ uvicorn backend_main_Version2:app --reload
 ```
 
 The API will be available at `http://localhost:8000`
+
+### Web UI Dashboard
+
+A web-based dashboard is available for easy interaction with the AI services:
+
+1. Start the API server (as shown above)
+2. Serve the web UI:
+   ```bash
+   # In a new terminal
+   python -m http.server 8080
+   ```
+3. Open your browser to `http://localhost:8080/index.html`
+
+The dashboard provides:
+- Quick access to AI services (Perplexity AI, Google Vertex AI)
+- Industry-specific solutions display (Healthcare, Education, Consumer)
+- IDE integration status
+- Visual status indicators for all services
 
 ## 📚 API Documentation
 
@@ -119,13 +150,19 @@ IDE integration endpoint for development tools.
 laughing-spoon/
 ├── backend_main.py           # Basic FastAPI orchestrator
 ├── backend_main_Version2.py  # Enhanced version with REST fallback
+├── index.html               # Web UI dashboard
 ├── styles_Version2.css       # Minimal CSS styles
 ├── styles_Version2.1.css     # Full CSS styles for UI components
-├── README_Version2.md        # Additional documentation
+├── start.sh                 # Automated startup script
 ├── requirements.txt          # Python dependencies
 ├── .env.example             # Example environment configuration
 ├── .gitignore               # Git ignore rules
-└── README.md                # This file
+├── README.md                # Main documentation
+├── README_Version2.md        # Version 2 specific notes
+├── API_GUIDE.md             # Detailed API usage guide
+├── DEPLOYMENT.md            # Deployment instructions
+├── QUICK_REFERENCE.md       # Quick command reference
+└── LICENSE                  # License information
 ```
 
 ## 🏥 Industry Applications
