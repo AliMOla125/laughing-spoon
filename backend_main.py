@@ -98,4 +98,33 @@ async def ask(q: Query):
         if q.use_vertex:
             # If Vertex client is installed, make a sync call in thread pool
             loop = asyncio.get_running_loop()
-            vertex_res = await
+            vertex_res = await loop.run_in_executor(None, call_vertex_ai_sync, q.prompt, q.vertex_instructions)
+
+        merged = {
+            "prompt": q.prompt,
+            "perplexity": perplexity_res,
+            "vertex": vertex_res,
+        }
+        return merged
+
+    except httpx.HTTPStatusError as e:
+        raise HTTPException(status_code=e.response.status_code, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/ide")
+async def ide_context(payload: Dict[str, Any]):
+    """
+    IDE endpoint used by the VS Code extension.
+    Accepts JSON:
+      { "context": "...", "question": "How do I refactor this?" }
+    Returns the same orchestration applied to the question with context prepended.
+    """
+    context = payload.get("context", "")
+    question = payload.get("question", "")
+    if not question:
+        raise HTTPException(status_code=400, detail="question required")
+    composed = f"Project context:\n{context}\n\nQuestion:\n{question}"
+    q = Query(prompt=composed, use_perplexity=True, use_vertex=True)
+    return await ask(q)
