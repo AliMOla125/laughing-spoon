@@ -45,6 +45,9 @@ cp .env.example .env
 
 **Option A: Using the automated startup script (Recommended)**
 ```bash
+# Make the script executable (if needed)
+chmod +x start.sh
+
 # For Version 2 (Enhanced)
 ./start.sh v2
 
@@ -70,7 +73,8 @@ A web-based dashboard is available for easy interaction with the AI services:
 1. Start the API server (as shown above)
 2. Serve the web UI:
    ```bash
-   # In a new terminal
+   # In a new terminal, from the project root directory
+   cd /path/to/laughing-spoon
    python -m http.server 8080
    ```
 3. Open your browser to `http://localhost:8080/index.html`
